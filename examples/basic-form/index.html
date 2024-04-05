@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример формы с PHP</title>
+</head>
+<body>
 
+<h2>Пример формы с PHP</h2>
+
+<?php
+// Проверяем, была ли отправлена форма
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Проверяем, что поле "name" не пустое
+    if (!empty($_POST["name"])) {
+        $name = $_POST["name"];
+        echo "<p>Привет, $name!</p>";
+    } else {
+        echo "<p>Пожалуйста, введите ваше имя.</p>";
+    }
+}
+?>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <label for="name">Введите ваше имя:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <input type="submit" value="Отправить">
+</form>
+
+</body>
+</html>
