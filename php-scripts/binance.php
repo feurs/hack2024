@@ -5,7 +5,6 @@ $apiSecret = 'ArwigRY5wPpybG2zYauhCYG6tluMhMEV5dUixCc9s8VK8NAbv3YeKqjM9zTvVUU9';
 
 function getDataFromBinance($apiKey, $apiSecret)
 {
-// Функция для отправки GET запросов к API Binance
     function binanceRequest($url, $params = array())
     {
         $ch = curl_init();
@@ -18,16 +17,12 @@ function getDataFromBinance($apiKey, $apiSecret)
         return json_decode($response, true);
     }
 
-// Запрос на получение текущих цен для 10 самых популярных торговых пар с USDT
     $apiUrl = 'https://api.binance.com/api/v3/ticker/price';
     $pairs = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'ADAUSDT', 'XRPUSDT', 'SOLUSDT', 'DOTUSDT', 'DOGEUSDT', 'LUNAUSDT', 'AVAXUSDT'];
     $prices = array();
     foreach ($pairs as $pair) {
         $params['symbol'] = $pair;
         $response = binanceRequest($apiUrl, $params);
-// Вывод ответа API Binance для отладки
-        var_dump($response);
-// Проверка наличия данных цены в ответе
         if (isset($response['price'])) {
             $prices[$pair] = $response['price'];
         } else {
