@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* https://blog.logrocket.com/how-to-use-css-variables-like-a-pro/ */
+/* variables deaclaration */
+:root {
+    /* --bg-feed-color: #1abc9c; */
+    --size-feed: 1700px; /* This value is also used in @media */
+
+
+    --border-size: 5px;
+    --margin-betveen: 20px;
+}
+
+/* https://css-tricks.com/forums/topic/div-doesnt-reach-edge-of-browser-page/ */
+/* A browser put some standard margins and paddings on elements. */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background-color: black;
+  color: white;
+  font-family: 'DM Mono', monospace;
+}
+
+svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    
+    width: 85%;
+    /* width: 90%; */
+    padding-left: var(--border-size);
+    padding-right: var(--border-size);
+    
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.navbar { /* Style the top navigation bar */
+  margin-bottom: var(--margin-betveen);
+  font-family: "Ubuntu";
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 1.3em;
+  line-height: 2;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  text-align: center;
+
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  overflow: hidden;
+  background-color: black;
+
+  
+}
+.navbar a { 
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 35px 10px 35px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  text-color: white;
+  border-radius: 25px;
+  padding: 2px 15px;
+  height: 150px;
+  line-height: 35px;
+
+  background: white;
+  box-shadow: 0px 10px 15px 5px rgb(0,0,0,0.4);
+  color: black;
+  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar img {
+  float: left;
+  width: 100px;
+  height: 70px;
+}
+
+.header h4 { 
+  color: black;
+  text-align: right;
+  font-size: 25px;
+}
+.header h1 {
+  color: black;
+  text-align: left;
+  font-size: 50px;
+}
+
+
+.feedContent {
+  word-break: keep-all;
+  margin-bottom: var(--margin-betveen);
+  margin-top: var(--margin-betveen);
+
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  font-size: 25px;
+  box-shadow: 0px 0px 35px 10px rgb(0,0,0,0.4);
+  color: black;
+}
+
+.feedContent h3 {
+  margin: 0px 0px;
+  font-size: 25px;
+}
+
+.feedContent h2 {
+  color: #2f35c5;
+}
+
+.centerTextAndImg {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 20px;
+  border-radius: 25px;
+  padding: 10px 10px;
+}
+
+.centerTextAndImg.right {
+  text-align: right;
+}
+
+.hvr-grow.centerImg {
+  border-radius: 25px;
+  margin: 15px 15px;
+
+}
+
+
+.footer {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  margin-top: var(--margin-betveen);
+  
+  height: 160px;
+  /* padding: 20px; */
+  background: black;
+
+  display: flex;
+  justify-content: center;
+}
+.footer h2 {
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+}
+.footer h2:hover {
+
+  text-shadow: none;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
