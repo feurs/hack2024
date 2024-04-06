@@ -38,5 +38,5 @@ function getDataFromBinance($apiKey, $apiSecret)
 
 //$data = getDataFromBinance($apiKey, $apiSecret);
 //foreach ($data as $pair => $price) {
-//    echo "$pair: $price\n";
+//    echo "$pair: $price\n" . "<br>";
 //}
