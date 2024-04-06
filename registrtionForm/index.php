@@ -31,16 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form>
+<form method="post">
     <h3>Login Here</h3>
 
-    <label for="username">Username</label>
-    <input type="text" placeholder="Email or Phone" id="username">
+    <label for="login">Username</label>
+    <input type="text" placeholder="Email or Phone" id="login" name="login">
 
     <label for="password">Password</label>
-    <input type="password" placeholder="Password" id="password">
+    <input type="password" placeholder="Password" id="password" name="password">
 
-    <button>Log In</button>
+    <button type="submit">Log In</button>
     <div class="social">
         <div class="go"><i class="fab fa-google"></i>  Google</div>
         <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
