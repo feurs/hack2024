@@ -1,4 +1,5 @@
 <?php
+ Acount Coin information
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -33,7 +34,8 @@ DOTUSDT FLOAT NOT NULL,
 DOGEUSDT FLOAT NOT NULL,
 LUNAUSDT FLOAT NOT NULL,
 AVAXUSDT FLOAT NOT NULL,
-EURUSDT FLOAT NOT NULL
+EURUSDT FLOAT NOT NULL,
+TATRAEUR FLOAT NOT NULL
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -44,8 +46,8 @@ if ($conn->query($sql) === TRUE) {
 
 
 
-$sql = "INSERT INTO UserAcount (BTCUSDT, ETHUSDT, BNBUSDT, ADAUSDT, XRPUSDT, SOLUSDT, DOTUSDT, DOGEUSDT, LUNAUSDT, AVAXUSDT, EURUSDT)
-VALUES (0,0,0,0,0,0,0,0,0,0,0)";
+$sql = "INSERT INTO UserAcount (BTCUSDT, ETHUSDT, BNBUSDT, ADAUSDT, XRPUSDT, SOLUSDT, DOTUSDT, DOGEUSDT, LUNAUSDT, AVAXUSDT, EURUSDT, TATRAEUR)
+VALUES (0,0,0,0,0,0,0,0,0,0,0,0)";
 
 
 if ($conn->query($sql) === TRUE) {
