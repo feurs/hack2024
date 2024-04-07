@@ -1,8 +1,5 @@
 <?php
 
-//ну этот код я даже комментировать не буду
-
-
 class Data
 {
     public string $login = '';
