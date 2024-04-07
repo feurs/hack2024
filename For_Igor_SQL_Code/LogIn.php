@@ -1,46 +1,33 @@
 <?php
-//вхід в акаунт (не створення нового)
-// Параметри підключення до бази даних
+//створення таблизі з одним рядком для збереження індексу користувача
+//запироз який не вовертає значення TRUE / FALSE
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "UsersLog";
+$dbname = "userslog";
 
-// Перевірка, чи передані логін та пароль
-if (isset($_POST['login']) && isset($_POST['password'])) {
-    // Зчитуємо логін та пароль з форми
-    $login = $_POST['login'];
-    $password = $_POST['password'];
 
-    // Підключаємося до бази даних
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// sql to create table
+$sql = "CREATE TABLE id_client (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  index_column INT(6) NOT NULL
+)";
 
-    // Перевіряємо підключення
-    if ($conn->connect_error) {
-        die("Помилка підключення до бази даних: " . $conn->connect_error);
-    }
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Підготовлений SQL-запит для отримання id користувача за логіном та паролем
-    $sql = "SELECT id FROM users WHERE login = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $login, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
 
-    // Перевіряємо, чи знайдено користувача
-    if ($result->num_rows > 0) {
-        // Отримуємо рядок результату та повертаємо id користувача
-        $row = $result->fetch_assoc();
-        $user_id = $row['id'];
-        //echo "ID користувача: " . $user_id;
-    } else {
-        echo "Invalid login or password";
-    }
 
-    // Закриваємо з'єднання з базою даних
-    $stmt->close();
-    $conn->close();
-} else {
-    echo "Будь ласка, введіть логін та пароль";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "Table MyGuests created successfully";
+    $new_sql = "INSERT INTO id_client (index_column) VALUES (-1)";
+    $conn->exec($new_sql);
+} catch(PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
+
+$conn = null;
 ?>
