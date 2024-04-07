@@ -1,0 +1,20 @@
+/* All backgrounds are taken from: */
+/* https://www.gradientmagic.com/collection/subtlegrid/gradient/1576443563843 */
+
+.background1 {
+  width: 100%;
+  background-image: url('assets/back.png');
+  background-repeat: no-repeat;
+
+  background-position: center center;
+
+  background-attachment: fixed;
+
+  -webkit-background-size: cover;
+
+  -moz-background-size: cover;
+
+  -o-background-size: cover;
+
+  background-size: cover;
+}
