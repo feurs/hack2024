@@ -1,3 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tatra banka</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Glassmorphism login Form Tutorial in html css</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/registrationForm.css" class="href">
+</head>
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form method="post">
+    <h3>Register Here</h3>
+
+    <label for="login">Username</label>
+    <input type="text" placeholder="Email or Phone" id="login" name="login">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="password">
+
+    <button type="submit">Register</button>
+    <div class="social">
+        <div class="go"><i class="fab fa-google"></i> Google</div>
+        <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+    </div>
+</form>
+
+</body>
+</html>
+</body>
+</html>
+
 <?php
 //створення нового акаунту
 // Параметри підключення до бази даних
@@ -39,6 +81,26 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
         // Виконуємо запит для додавання нового користувача
         if ($stmt_add_user->execute() === TRUE) {
             echo "New user successfully added";
+
+            // Create connection
+            $new_conn = new mysqli($servername, $username, $password_sql, $dbname);
+
+            // Check connection
+            if ($new_conn->connect_error) {
+                die("Connection failed: " . $new_conn->connect_error);
+            }
+            $sql = "INSERT INTO UserAcount (BTCUSDT, ETHUSDT, BNBUSDT, ADAUSDT, XRPUSDT, SOLUSDT, DOTUSDT, DOGEUSDT, LUNAUSDT, AVAXUSDT, EURUSDT, TATRAEUR)
+            VALUES (0,0,0,0,0,0,0,0,0,0,0,0)";
+
+
+            if ($new_conn->query($sql) === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $new_conn->error;
+            }
+
+
+            $new_conn->close();
         } else {
             echo "Error adding user: " . $conn->error;
         }
