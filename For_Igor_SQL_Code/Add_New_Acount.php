@@ -42,11 +42,12 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
         } else {
             echo "Error adding user: " . $conn->error;
         }
+        $stmt_add_user->close();
     }
 
     // Закриваємо з'єднання з базою даних
     $stmt_check_user->close();
-    $stmt_add_user->close();
+
     $conn->close();
 } else {
     echo "Please enter your login and password";
