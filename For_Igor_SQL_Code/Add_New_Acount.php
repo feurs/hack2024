@@ -3,7 +3,7 @@
 // Параметри підключення до бази даних
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password_sql = "";
 $dbname = "UsersLog";
 
 // Перевірка, чи передані логін та пароль
@@ -13,7 +13,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
     // Підключаємося до бази даних
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password_sql, $dbname);
 
     // Перевіряємо підключення
     if ($conn->connect_error) {
