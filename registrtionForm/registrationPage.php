@@ -49,7 +49,7 @@ $password_sql = "";
 $dbname = "UsersLog";
 
 // Перевірка, чи передані логін та пароль
-if (isset($_POST['login']) && isset($_POST['password'])) {
+if (isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
     // Зчитуємо логін та пароль з форми
     $login = $_POST['login'];
     $password = $_POST['password'];
