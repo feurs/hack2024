@@ -1,6 +1,5 @@
 <?php
 
-// Пацаны это один блок из которых потом собирается блокчейн
 class Block {
     public $index;
     public $timestamp;
@@ -21,7 +20,6 @@ class Block {
     }
 }
 
-// А вот это ребята уже сам блокчейн 
 class Blockchain {
     public $chain;
     public $difficulty;
@@ -31,15 +29,13 @@ class Blockchain {
         $this->difficulty = 2;
     }
 
-  //Просто генерация нового блока
     public function createGenesisBlock() {
         return new Block(0, date('Y-m-d H:i:s'), 'Genesis Block', '0');
     }
-// Тут мы получаем последний использованный хэш блок чтобы связать его с новым 
     public function getLatestBlock() {
         return $this->chain[count($this->chain) - 1];
     }
-// тут уже добавляем новый блок в цеопчку
+
     public function addBlock($newBlock) {
         $newBlock->previousHash = $this->getLatestBlock()->hash;
         $newBlock->hash = $this->proofOfWork($newBlock);
@@ -73,7 +69,6 @@ class Blockchain {
     }
 }
 
-// Класс криптовалюты
 class Tatracoin {
     private $address;
     private $users;
@@ -83,18 +78,15 @@ class Tatracoin {
         $this->users = [];
         $this->loadUsers();
     }
-// Дима это на тебе надо поменять эту убогую загрузку юзеров с файла на нормальную sql
     private function loadUsers() {
         if (file_exists($this->address)) {
             $usersData = file_get_contents($this->address);
             $this->users = unserialize($usersData);
         }
     }
-// тоже что и прошлое но тут уже сохраняем юзеров(и их активы соответственно)
     private function saveUsers() {
         file_put_contents($this->address, serialize($this->users));
     }
-// отправка токенов от юзера к другому 
     public function transferCoin($from, $to, $amount) {
         if (!isset($this->users[$from]) || !isset($this->users[$to])) {
             return false;
@@ -109,9 +101,6 @@ class Tatracoin {
         $this->saveUsers();
         return true;
     }
-  // не знаю зачем я это написал но это добавление нового пользователя тут отдельным методои
-  // чекушки все таки дали о себе знать реально хз зачем это тут
-  // но пусть будет каждый же знает чем больше строк - тем больше хуй
     public function addUser($user) {
         $this->users[$user->login] = $user;
         $this->saveUsers();
